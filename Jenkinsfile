@@ -45,4 +45,12 @@ pipeline {
             } // steps
         } // stage
     } // stages
+    post {
+        always {
+            sh """
+                sudo pip3 uninstall docker -y
+                sudo pip3 uninstall molecule -y
+            """
+        }
+    }
 } // pipeline
