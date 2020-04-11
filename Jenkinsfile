@@ -12,9 +12,11 @@ pipeline {
             } // stage
         } // stages
         stage("Create docker image for testing") {
-            sh """
-                python3 -m molecule create
-            """
+            steps {
+                sh """
+                    python3 -m molecule create
+                """
+            } // steps
         } // stage
         stage("Apply ansible role to docker image") {
             steps {
