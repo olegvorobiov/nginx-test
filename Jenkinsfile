@@ -3,6 +3,14 @@ pipeline {
         label "wombat"
     } // agent
     stages {
+        stage("Set up") {
+            steps {
+                sh """
+                    sudo pip3 install molecule
+                    sudo pip3 install docker
+                """
+            } // stage
+        } // stages
         stage("Create docker image for testing") {
             sh """
                 python3 -m molecule create
